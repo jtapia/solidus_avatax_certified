@@ -3,19 +3,25 @@
 require 'spec_helper'
 
 describe SolidusAvataxCertified::Address, type: :model do
-  let(:address){ build(:address) }
-  let(:order) { build(:order_with_line_items, ship_address: address) }
+  let!(:address) { create(:address) }
+  let!(:order) do
+    build(
+      :order_with_line_items,
+      ship_address: address,
+      bill_address: address
+    )
+  end
+  let(:address_lines) { SolidusAvataxCertified::Address.new(order) }
 
   before do
     Spree::Avatax::Config.address_validation = true
   end
 
-  let(:address_lines) { SolidusAvataxCertified::Address.new(order) }
-
   describe '#initialize' do
     it 'has order' do
       expect(address_lines.order).to eq(order)
     end
+
     it 'has addresses be a Hash' do
       expect(address_lines.addresses).to be_kind_of(Hash)
     end
@@ -51,11 +57,11 @@ describe SolidusAvataxCertified::Address, type: :model do
       address_lines.validate
     end
 
-    it "validates address with success" do
+    it 'validates address with success' do
       expect(subject).to be_success
     end
 
-    it "does not validate when config settings are false" do
+    it 'does not validate when config settings are false' do
       Spree::Avatax::Config.address_validation = false
 
       expect(subject).to eq("Address validation disabled")

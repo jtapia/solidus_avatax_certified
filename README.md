@@ -1,6 +1,7 @@
-# solidus_avatax_certified
+SolidusAvataxCertified
+================
 
-[![CircleCI](https://circleci.com/gh/boomerdigital/solidus_avatax_certified.svg?style=svg)](https://circleci.com/gh/boomerdigital/solidus_avatax_certified)
+[![Circle CI](https://circleci.com/gh/jtapia/solidus_avatax_certified/tree/master.svg?style=shield)](https://circleci.com/gh/jtapia/solidus_avatax_certified/tree/master)
 
 solidus_avatax_certified is the *only* [officially certified AvaTax solution](https://www.avalara.com/legal/avalara-certified.html)
 that integrates with Solidus. With this extension, you can add instantaneous sales tax decisions to

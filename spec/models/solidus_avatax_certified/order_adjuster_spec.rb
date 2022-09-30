@@ -9,7 +9,14 @@ describe SolidusAvataxCertified::OrderAdjuster, :vcr do
     context 'before payment state' do
       let(:line_item) { build_stubbed(:line_item) }
       let(:shipment) { build_stubbed(:shipment) }
-      let(:order) { build_stubbed(:order, state: 'delivery', line_items: [line_item], shipments: [shipment]) }
+      let(:order) do
+        build_stubbed(
+          :order,
+          state: 'delivery',
+          line_items: [line_item],
+          shipments: [shipment]
+        )
+      end
 
       it 'does not create new tax adjustments' do
         expect{ adjuster.adjust! }.not_to change { Spree::Adjustment.count }
@@ -31,7 +38,10 @@ describe SolidusAvataxCertified::OrderAdjuster, :vcr do
 
       xit 'updates the adjustments' do
         expect(order.state).to eq('payment')
-        expect{ adjuster.adjust! }.to change { order.line_items.first.adjustments.tax.first.amount }.from(0.4).to(0.8)
+        expect do
+          adjuster.adjust!
+        end.to change { order.line_items.first.adjustments.tax.first.amount }
+          .from(0.4).to(0.8)
       end
     end
   end

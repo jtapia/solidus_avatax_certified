@@ -7,7 +7,8 @@ module SolidusAvataxCertified
         return (order.line_items + order.shipments)
       end
 
-      super
+      taxes = ::Spree::Config.tax_calculator_class.new(order).calculate
+      ::Spree::OrderTaxation.new(order).apply(taxes)
     end
   end
 end

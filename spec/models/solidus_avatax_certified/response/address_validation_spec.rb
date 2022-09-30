@@ -85,7 +85,8 @@ RSpec.describe SolidusAvataxCertified::Response::AddressValidation do
 
         expect(details).to be_kind_of Array
         expect(details.length).to eq(1)
-        expect(details.first).to eq('The address value  was incomplete.  You must provide either a valid postal code, line1 + city + region, or latitude + longitude.  For international transactions outside of US/CA, only a country code is required.')
+        expect(details.first)
+          .to eq('The address value  was incomplete.  You must provide either a valid postal code, line1 + city + region, or latitude + longitude.  For international transactions outside of US/CA, only a country code is required.')
       end
     end
 
@@ -123,7 +124,8 @@ RSpec.describe SolidusAvataxCertified::Response::AddressValidation do
         details = response.detailed_messages
 
         expect(details).to be_kind_of Array
-        expect(details.first).to eq('The physical location exists but there are no homes on this street. One reason might be railroad tracks or rivers running alongside this street, as they would prevent construction of homes in this location.')
+        expect(details.first)
+          .to eq('The physical location exists but there are no homes on this street. One reason might be railroad tracks or rivers running alongside this street, as they would prevent construction of homes in this location.')
       end
     end
   end

@@ -3,15 +3,16 @@
 require 'spec_helper'
 
 describe Spree::Order, :vcr do
-  let(:completed_order) { create(:completed_avalara_order) }
-  let(:avalara_order) { create(:avalara_order) }
-  let(:order) { build(:avalara_order, ship_address: build(:address)) }
+  let!(:address) { create(:address) }
+  let!(:completed_order) { create(:completed_avalara_order) }
+  let!(:avalara_order) { create(:avalara_order) }
+  let!(:order) { create(:avalara_order) }
 
   it { is_expected.to have_one :avalara_transaction }
 
   describe "#avalara_tax_enabled?" do
     it "returns true" do
-      expect(Spree::Order.new.avalara_tax_enabled?).to eq(true)
+      expect(Spree::Order.new.avalara_tax_enabled?).to be(true)
     end
   end
 
@@ -50,22 +51,28 @@ describe Spree::Order, :vcr do
       it 'raises exception if preference is enabled' do
         Spree::Avatax::Config.raise_exceptions = true
 
-        expect{ subject }.to raise_exception(SolidusAvataxCertified::RequestError)
+        expect {
+          subject
+        }.to raise_exception(SolidusAvataxCertified::RequestError)
       end
     end
   end
 
-  describe "#avalara_capture" do
+  describe '#avalara_capture' do
     subject do
       avalara_order.avalara_capture
     end
 
-    it "responses with Hash object" do
+    it 'responses with Hash object' do
       expect(subject).to be_kind_of(Hash)
     end
-    it "creates new avalara_transaction" do
-      expect{ subject }.to change{ Spree::AvalaraTransaction.count }.by(1)
+
+    it 'creates new avalara_transaction' do
+      subject
+
+      expect(Spree::AvalaraTransaction.count).not_to be(0)
     end
+
     it 'has key totalTax' do
       expect(subject['totalTax']).to be_present
     end
@@ -83,19 +90,6 @@ describe Spree::Order, :vcr do
     it 'has key totalTax' do
       expect(subject['totalTax']).to be_present
     end
-
-    # Spec fails when using VCR since dates are involved.
-
-    # context 'commit on completed at date' do
-    #   before do
-    #     completed_order.update(completed_at: 5.days.ago)
-    #   end
-
-    #   it 'has a docdate of completed at date' do
-    #     response = completed_order.avalara_capture_finalize
-    #     expect(response['DocDate']).to eq(5.days.ago.strftime('%F'))
-    #   end
-    # end
   end
 
   describe '#avatax_cache_key' do
@@ -116,6 +110,7 @@ describe Spree::Order, :vcr do
     it 'responds with user usage type' do
       expect(order.customer_usage_type).to eq('A')
     end
+
     it 'responds with blank string if no user' do
       order.update(user: nil)
       expect(order.customer_usage_type).to eq('')
@@ -123,6 +118,16 @@ describe Spree::Order, :vcr do
   end
 
   describe '#validate_ship_address' do
+    let!(:avalara_order) do
+      create(
+        :avalara_order,
+        ship_address: address,
+        state: 'address',
+        tax_included: true
+      )
+    end
+    let!(:order) { create(:avalara_order) }
+
     it 'returns the response if validation is success' do
       Spree::Avatax::Config.address_validation = true
       response = order.validate_ship_address
@@ -130,7 +135,7 @@ describe Spree::Order, :vcr do
       expect(response['error']).not_to be_present
     end
 
-    it 'returns the response if refuse checkout on address validation is disabled' do
+    it 'returns the refuse checkout response on address validation is disabled' do
       Spree::Avatax::Config.refuse_checkout_address_validation_error = false
       response = order.validate_ship_address
 
@@ -143,14 +148,16 @@ describe Spree::Order, :vcr do
         order.ship_address.update(zipcode: nil, city: nil, address1: nil)
         response = order.validate_ship_address
 
-        expect(response).to eq(false)
+        expect(response).to be(false)
       end
 
       it 'raise exceptions if raise_exceptions preference is enabled' do
         Spree::Avatax::Config.raise_exceptions = true
         order.ship_address.update(zipcode: nil, city: nil, address1: nil)
 
-        expect{ order.validate_ship_address }.to raise_exception(SolidusAvataxCertified::RequestError)
+        expect {
+          order.validate_ship_address
+        }.to raise_exception(SolidusAvataxCertified::RequestError)
       end
     end
   end
@@ -164,7 +171,10 @@ describe Spree::Order, :vcr do
 
     it 'returns true if preference is true and country validation is enabled' do
       Spree::Avatax::Config.address_validation = true
-      Spree::Avatax::Config.address_validation_enabled_countries = ['United States', 'Canada']
+      Spree::Avatax::Config.address_validation_enabled_countries = [
+        'United States',
+        'Canada'
+      ]
 
       expect(order).to be_address_validation_enabled
     end

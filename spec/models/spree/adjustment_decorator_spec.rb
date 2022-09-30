@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Spree::Adjustment, type: :model do
-  let(:order) { build(:avalara_order) }
+  let!(:order) { create(:avalara_order) }
 
   describe '#avatax_cache_key' do
     it 'responds with a cache key' do
