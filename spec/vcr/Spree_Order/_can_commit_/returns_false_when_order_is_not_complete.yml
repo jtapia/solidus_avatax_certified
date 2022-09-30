@@ -1,0 +1,207 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/createoradjust
+    body:
+      encoding: UTF-8
+      string: '{"createTransactionModel":{"code":"R250213676","date":"2022-09-30","discount":"0.0","commit":false,"type":"SalesOrder","lines":[{"number":"1-LI","description":"Product
+        #8 - 7304","taxCode":"PC030000","itemCode":"SKU-8","quantity":1,"amount":10.0,"discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null},{"number":"1-FR","itemCode":"Avalara
+        Ground","quantity":1,"amount":5.0,"description":"Shipping Charge","taxCode":"FR000000","discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null}],"customerCode":1,"companyCode":"DEFAULT","customerUsageType":null,"exemptionNo":null,"referenceCode":"R250213676","currencyCode":"USD","businessIdentificationNo":null}}'
+    headers:
+      X-Avalara-Uid:
+      - a0o33000004FH8l
+      User-Agent:
+      - Faraday v1.10.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic MTIzNDU6MTIzNDU=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Sep 2022 21:27:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '361'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 76b5c8e9-1d1d-4882-91f1-86a39e0190f8
+      X-Avalara-Uid:
+      - 76b5c8e9-1d1d-4882-91f1-86a39e0190f8
+    body:
+      encoding: UTF-8
+      string: '{"error": {"code": "AuthenticationException","message": "Authentication
+        failed.","details": [{"code": "AuthenticationException","message": "Authentication
+        failed.","description": "Missing authentication or unable to authenticate
+        the user or the account.","faultCode": "Client","helpLink": "http://developer.avalara.com/avatax/errors/AuthenticationException"}]}}'
+  recorded_at: Fri, 30 Sep 2022 21:27:35 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/createoradjust
+    body:
+      encoding: UTF-8
+      string: '{"createTransactionModel":{"code":"R250213676","date":"2022-09-30","discount":"0.0","commit":true,"type":"SalesInvoice","lines":[{"number":"1-LI","description":"Product
+        #8 - 7304","taxCode":"PC030000","itemCode":"SKU-8","quantity":1,"amount":10.0,"discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null},{"number":"1-FR","itemCode":"Avalara
+        Ground","quantity":1,"amount":5.0,"description":"Shipping Charge","taxCode":"FR000000","discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null}],"customerCode":1,"companyCode":"DEFAULT","customerUsageType":null,"exemptionNo":null,"referenceCode":"R250213676","currencyCode":"USD","businessIdentificationNo":null}}'
+    headers:
+      X-Avalara-Uid:
+      - a0o33000004FH8l
+      User-Agent:
+      - Faraday v1.10.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic MTIzNDU6MTIzNDU=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Sep 2022 21:27:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '361'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - c401965e-391f-4e2d-975a-dbf9928df7d3
+      X-Avalara-Uid:
+      - c401965e-391f-4e2d-975a-dbf9928df7d3
+    body:
+      encoding: UTF-8
+      string: '{"error": {"code": "AuthenticationException","message": "Authentication
+        failed.","details": [{"code": "AuthenticationException","message": "Authentication
+        failed.","description": "Missing authentication or unable to authenticate
+        the user or the account.","faultCode": "Client","helpLink": "http://developer.avalara.com/avatax/errors/AuthenticationException"}]}}'
+  recorded_at: Fri, 30 Sep 2022 21:27:35 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/createoradjust
+    body:
+      encoding: UTF-8
+      string: '{"createTransactionModel":{"code":"R529612324","date":"2022-09-30","discount":"0.0","commit":false,"type":"SalesOrder","lines":[{"number":"2-LI","description":"Product
+        #9 - 8803","taxCode":"PC030000","itemCode":"SKU-9","quantity":1,"amount":10.0,"discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null},{"number":"2-FR","itemCode":"Avalara
+        Ground","quantity":1,"amount":5.0,"description":"Shipping Charge","taxCode":"FR000000","discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null}],"customerCode":2,"companyCode":"DEFAULT","customerUsageType":null,"exemptionNo":null,"referenceCode":"R529612324","currencyCode":"USD","businessIdentificationNo":null}}'
+    headers:
+      X-Avalara-Uid:
+      - a0o33000004FH8l
+      User-Agent:
+      - Faraday v1.10.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic MTIzNDU6MTIzNDU=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Sep 2022 21:27:36 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '361'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 5fe1a1d6-0888-42f2-8ace-e73988e06c70
+      X-Avalara-Uid:
+      - 5fe1a1d6-0888-42f2-8ace-e73988e06c70
+    body:
+      encoding: UTF-8
+      string: '{"error": {"code": "AuthenticationException","message": "Authentication
+        failed.","details": [{"code": "AuthenticationException","message": "Authentication
+        failed.","description": "Missing authentication or unable to authenticate
+        the user or the account.","faultCode": "Client","helpLink": "http://developer.avalara.com/avatax/errors/AuthenticationException"}]}}'
+  recorded_at: Fri, 30 Sep 2022 21:27:36 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/createoradjust
+    body:
+      encoding: UTF-8
+      string: '{"createTransactionModel":{"code":"R894180159","date":"2022-09-30","discount":"0.0","commit":false,"type":"SalesOrder","lines":[{"number":"3-LI","description":"Product
+        #10 - 4376","taxCode":"PC030000","itemCode":"SKU-10","quantity":1,"amount":10.0,"discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null},{"number":"3-FR","itemCode":"Avalara
+        Ground","quantity":1,"amount":5.0,"description":"Shipping Charge","taxCode":"FR000000","discounted":false,"taxIncluded":false,"addresses":{"shipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"AL","country":"US","postalCode":"20500"},"shipTo":{"line1":"915
+        S Jackson St","line2":"","city":"Montgomery","region":"AL","country":"US","postalCode":"36104"}},"customerUsageType":null,"businessIdentificationNo":null,"exemptionCode":null}],"customerCode":3,"companyCode":"DEFAULT","customerUsageType":null,"exemptionNo":null,"referenceCode":"R894180159","currencyCode":"USD","businessIdentificationNo":null}}'
+    headers:
+      X-Avalara-Uid:
+      - a0o33000004FH8l
+      User-Agent:
+      - Faraday v1.10.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic MTIzNDU6MTIzNDU=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Fri, 30 Sep 2022 21:27:37 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '361'
+      Connection:
+      - keep-alive
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-Id:
+      - 989c4455-ac2b-4c61-aed3-100030116f19
+      X-Avalara-Uid:
+      - 989c4455-ac2b-4c61-aed3-100030116f19
+    body:
+      encoding: UTF-8
+      string: '{"error": {"code": "AuthenticationException","message": "Authentication
+        failed.","details": [{"code": "AuthenticationException","message": "Authentication
+        failed.","description": "Missing authentication or unable to authenticate
+        the user or the account.","faultCode": "Client","helpLink": "http://developer.avalara.com/avatax/errors/AuthenticationException"}]}}'
+  recorded_at: Fri, 30 Sep 2022 21:27:37 GMT
+recorded_with: VCR 6.1.0

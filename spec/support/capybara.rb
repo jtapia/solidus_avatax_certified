@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/cuprite'
 
 Capybara.javascript_driver = :cuprite

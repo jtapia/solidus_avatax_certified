@@ -1,5 +1,17 @@
 # Change Log
 
+## [v3.0.1](https://github.com/jtapia/solidus_avatax_certified/tree/HEAD)
+
+[Full Changelog](https://github.com/jtapia/solidus_avatax_certified/compare/v2.1.1...HEAD)
+
+**Closed issues:**
+
+- Add support for Solidus v3.2
+
+**Merged pull requests:**
+
+- Add support for Solidus v3.2 [\#1](https://github.com/jtapia/solidus_avatax_certified/pull/1)
+
 ## [Unreleased](https://github.com/boomerdigital/solidus_avatax_certified/tree/HEAD)
 
 [Full Changelog](https://github.com/boomerdigital/solidus_avatax_certified/compare/v2.1.1...HEAD)

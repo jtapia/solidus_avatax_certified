@@ -2,14 +2,10 @@
 
 require 'spec_helper'
 
-RSpec.describe Spree::Admin::AvalaraEntityUseCodesController do
-  let(:avalara_entity_use_code) { FactoryBot.create(:avalara_entity_use_code) }
-
+RSpec.describe Spree::Admin::AvalaraEntityUseCodesController, type: :controller do
   stub_authorization!
 
-  before do
-    DatabaseCleaner.clean
-  end
+  let(:avalara_entity_use_code) { FactoryBot.create(:avalara_entity_use_code) }
 
   describe '#index' do
     subject { get :index }

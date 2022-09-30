@@ -43,7 +43,7 @@ module SolidusAvataxCertified
       end
 
       def validate_ship_address
-        avatax_address = SolidusAvataxCertified::Address.new(self)
+        avatax_address = ::SolidusAvataxCertified::Address.new(self)
         response = avatax_address.validate
 
         return response.result if response.success?
@@ -83,7 +83,9 @@ module SolidusAvataxCertified
       end
 
       def logger
-        @logger ||= SolidusAvataxCertified::AvataxLog.new('Spree::Order class', 'Start order processing')
+        @logger ||= ::SolidusAvataxCertified::AvataxLog.new(
+          'Spree::Order class', 'Start order processing'
+        )
       end
 
       ::Spree::Order.prepend self

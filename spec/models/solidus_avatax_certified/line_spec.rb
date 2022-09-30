@@ -47,15 +47,19 @@ describe SolidusAvataxCertified::Line, :vcr do
 
     describe '#item_line' do
       it 'returns a Hash with correct keys' do
-        expect(sales_lines.item_line(order.line_items.first)).to be_kind_of(Hash)
-        expect(sales_lines.item_line(order.line_items.first)[:number]).to be_present
+        expect(sales_lines.item_line(order.line_items.first))
+          .to be_kind_of(Hash)
+        expect(sales_lines.item_line(order.line_items.first)[:number])
+          .to be_present
       end
     end
 
     describe '#shipment_line' do
       it 'returns a Hash with correct keys' do
-        expect(sales_lines.shipment_line(order.shipments.first)).to be_kind_of(Hash)
-        expect(sales_lines.shipment_line(order.shipments.first)[:number]).to be_present
+        expect(sales_lines.shipment_line(order.shipments.first))
+          .to be_kind_of(Hash)
+        expect(sales_lines.shipment_line(order.shipments.first)[:number])
+          .to be_present
       end
     end
   end
@@ -64,7 +68,14 @@ describe SolidusAvataxCertified::Line, :vcr do
     let(:authorization) { generate(:refund_transaction_id) }
     let(:payment_amount) { 10 * 2 }
     let(:payment_method) { build(:credit_card_payment_method) }
-    let(:payment) { build(:payment, amount: payment_amount, payment_method: payment_method, order: order) }
+    let(:payment) do
+      build(
+        :payment,
+        amount: payment_amount,
+        payment_method: payment_method,
+        order: order
+      )
+    end
     let(:refund_reason) { build(:refund_reason) }
     let(:gateway_response) {
       ActiveMerchant::Billing::Response.new(
@@ -79,9 +90,18 @@ describe SolidusAvataxCertified::Line, :vcr do
     let(:gateway_response_params) { {} }
     let(:gateway_response_options) { {} }
 
-    let(:refund) { Spree::Refund.new(payment: payment, amount: BigDecimal(10), reason: refund_reason, transaction_id: nil) }
+    let(:refund) do
+      Spree::Refund.new(
+        payment: payment,
+        amount: BigDecimal(10),
+        reason: refund_reason,
+        transaction_id: nil
+      )
+    end
     let(:shipped_order) { build(:shipped_order) }
-    let(:return_lines) { SolidusAvataxCertified::Line.new(shipped_order, 'ReturnOrder', refund) }
+    let(:return_lines) do
+      SolidusAvataxCertified::Line.new(shipped_order, 'ReturnOrder', refund)
+    end
 
     describe 'build_lines' do
       it 'receives method refund_lines' do
