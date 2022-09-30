@@ -76,7 +76,7 @@ describe SolidusAvataxCertified::Line, :vcr do
         order: order
       )
     end
-    let(:refund_reason) { build(:refund_reason) }
+    let!(:refund_reason) { create(:refund_reason) }
     let(:gateway_response) {
       ActiveMerchant::Billing::Response.new(
         gateway_response_success,
@@ -89,8 +89,7 @@ describe SolidusAvataxCertified::Line, :vcr do
     let(:gateway_response_message) { '' }
     let(:gateway_response_params) { {} }
     let(:gateway_response_options) { {} }
-
-    let(:refund) do
+    let!(:refund) do
       Spree::Refund.new(
         payment: payment,
         amount: BigDecimal(10),
@@ -98,7 +97,7 @@ describe SolidusAvataxCertified::Line, :vcr do
         transaction_id: nil
       )
     end
-    let(:shipped_order) { build(:shipped_order) }
+    let!(:shipped_order) { create(:shipped_order) }
     let(:return_lines) do
       SolidusAvataxCertified::Line.new(shipped_order, 'ReturnOrder', refund)
     end

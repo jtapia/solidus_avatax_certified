@@ -5,7 +5,7 @@ require 'spec_helper'
 describe SolidusAvataxCertified::Address, type: :model do
   let!(:address) { create(:address) }
   let!(:order) do
-    build(
+    create(
       :order_with_line_items,
       ship_address: address,
       bill_address: address
