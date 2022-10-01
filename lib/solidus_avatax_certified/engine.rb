@@ -18,5 +18,9 @@ module SolidusAvataxCertified
     def self.frontend_available?
       const_defined?('::Spree::Frontend::Engine')
     end
+
+    initializer 'solidus_avatax_certified.environment', before: :load_config_initializers do
+      SolidusAvataxCertified::Config = SolidusAvataxCertified::Configuration.new
+    end
   end
 end

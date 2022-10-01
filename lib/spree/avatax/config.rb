@@ -3,7 +3,7 @@
 module Spree
   module Avatax
     def self.init
-      const_set 'Config', Spree::AvataxConfiguration.new
+      const_set 'Config', SolidusAvataxCertified::Configuration.new
     end
   end
 end

@@ -14,7 +14,7 @@ describe SolidusAvataxCertified::Address, type: :model do
   let(:address_lines) { SolidusAvataxCertified::Address.new(order) }
 
   before do
-    Spree::Avatax::Config.address_validation = true
+    SolidusAvataxCertified::Config.address_validation = true
   end
 
   describe '#initialize' do
@@ -62,7 +62,7 @@ describe SolidusAvataxCertified::Address, type: :model do
     end
 
     it 'does not validate when config settings are false' do
-      Spree::Avatax::Config.address_validation = false
+      SolidusAvataxCertified::Config.address_validation = false
 
       expect(subject).to eq("Address validation disabled")
     end
@@ -80,7 +80,7 @@ describe SolidusAvataxCertified::Address, type: :model do
       end
 
       it 'raises exception if preference is set to true' do
-        Spree::Avatax::Config.raise_exceptions = true
+        SolidusAvataxCertified::Config.raise_exceptions = true
 
         expect { subject }.to raise_exception(SolidusAvataxCertified::RequestError)
       end

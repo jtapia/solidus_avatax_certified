@@ -9,12 +9,12 @@ describe SolidusAvataxCertified::AvataxLog, type: :model do
   let(:request_hash) { attributes_for(:request_hash) }
 
   before do
-    Spree::Avatax::Config.log_to_stdout = false
+    SolidusAvataxCertified::Config.log_to_stdout = false
   end
 
   describe '#enabled?' do
     it 'returns a boolean value' do
-      Spree::Avatax::Config.log = true
+      SolidusAvataxCertified::Config.log = true
 
       expect(logger).to be_enabled
     end
@@ -22,8 +22,8 @@ describe SolidusAvataxCertified::AvataxLog, type: :model do
 
   describe '#progname' do
     it 'sets the logger progname' do
-      Spree::Avatax::Config.log_to_stdout = false
-      Spree::Avatax::Config.log = true
+      SolidusAvataxCertified::Config.log_to_stdout = false
+      SolidusAvataxCertified::Config.log = true
 
       expect{
         logger.progname('changed')
@@ -31,7 +31,7 @@ describe SolidusAvataxCertified::AvataxLog, type: :model do
     end
 
     it 'returns nil if logger is not enabled' do
-      Spree::Avatax::Config.log = false
+      SolidusAvataxCertified::Config.log = false
 
       expect(logger.progname('this_wont_change')).to be_nil
     end
@@ -44,7 +44,7 @@ describe SolidusAvataxCertified::AvataxLog, type: :model do
     end
 
     it 'returns nil if logger is not enabled' do
-      Spree::Avatax::Config.log = false
+      SolidusAvataxCertified::Config.log = false
 
       expect(logger.info('this_wont_change')).to be_nil
     end
@@ -59,7 +59,7 @@ describe SolidusAvataxCertified::AvataxLog, type: :model do
     end
 
     it 'returns nil if logger is not enabled' do
-      Spree::Avatax::Config.log = false
+      SolidusAvataxCertified::Config.log = false
 
       expect(logger.info_and_debug('Hyah!', ['Heuh!'])).to be_nil
     end
@@ -74,7 +74,7 @@ describe SolidusAvataxCertified::AvataxLog, type: :model do
     end
 
     it 'returns nil if logger is not enabled' do
-      Spree::Avatax::Config.log = false
+      SolidusAvataxCertified::Config.log = false
 
       expect(logger.debug(['Heuh!'])).to be_nil
     end
@@ -88,7 +88,7 @@ describe SolidusAvataxCertified::AvataxLog, type: :model do
     end
 
     it 'returns nil if logger is not enabled' do
-      Spree::Avatax::Config.log = false
+      SolidusAvataxCertified::Config.log = false
 
       expect(logger.error('this_wont_change')).to be_nil
     end

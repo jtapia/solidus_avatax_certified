@@ -68,27 +68,27 @@ class TaxSvc
   private
 
   def tax_calculation_enabled?
-    Spree::Avatax::Config.tax_calculation
+    SolidusAvataxCertified::Config.tax_calculation
   end
 
   def account_number
-    Spree::Avatax::Config.account
+    SolidusAvataxCertified::Config.account
   end
 
   def license_key
-    Spree::Avatax::Config.license_key
+    SolidusAvataxCertified::Config.license_key
   end
 
   def raise_exceptions?
-    Spree::Avatax::Config.raise_exceptions
+    SolidusAvataxCertified::Config.raise_exceptions
   end
 
   def company_code
-    Spree::Avatax::Config.company_code
+    SolidusAvataxCertified::Config.company_code
   end
 
   def environment
-    Spree::Avatax::Config.environment
+    SolidusAvataxCertified::Config.environment
   end
 
   def client
