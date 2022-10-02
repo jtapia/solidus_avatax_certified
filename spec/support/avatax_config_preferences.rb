@@ -2,26 +2,19 @@
 
 class MyConfigPreferences
   def self.set_preferences
-    Spree::Avatax::Config.reset
-
-    Spree::Avatax::Config.configure do |config|
-      config.company_code = 'DEFAULT'
-      config.license_key = '12345'
-      config.account = '12345'
-
-      config.refuse_checkout_address_validation_error = false
-      config.log_to_stdout = false
-      config.raise_exceptions = false
-      config.log = true
-      config.address_validation = true
-      config.tax_calculation = true
-      config.document_commit = true
-      config.customer_can_validate = true
-
-      config.address_validation_enabled_countries = ['United States', 'Canada']
-
-      config.origin = "{\"line1\":\"915 S Jackson St\",\"line2\":\"\",\"city\":\"Montgomery\",\"region\":\"AL\",\"postalCode\":\"36104\",\"country\":\"US\"}"
-    end
+    SolidusAvataxCertified::Config.company_code = 'DEFAULT'
+    SolidusAvataxCertified::Config.license_key = '12345'
+    SolidusAvataxCertified::Config.account = '12345'
+    SolidusAvataxCertified::Config.refuse_checkout_address_validation_error = false
+    SolidusAvataxCertified::Config.log_to_stdout = false
+    SolidusAvataxCertified::Config.raise_exceptions = false
+    SolidusAvataxCertified::Config.log = true
+    SolidusAvataxCertified::Config.address_validation = true
+    SolidusAvataxCertified::Config.tax_calculation = true
+    SolidusAvataxCertified::Config.document_commit = true
+    SolidusAvataxCertified::Config.customer_can_validate = true
+    SolidusAvataxCertified::Config.address_validation_enabled_countries = ['United States', 'Canada']
+    SolidusAvataxCertified::Config.origin = "{\"line1\":\"915 S Jackson St\",\"line2\":\"\",\"city\":\"Montgomery\",\"region\":\"AL\",\"postalCode\":\"36104\",\"country\":\"US\"}"
   end
 end
 
