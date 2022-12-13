@@ -15,7 +15,7 @@ class AddressValidator
 
     Spree.ajax
       method: 'GET'
-      url: Spree.routes.validate_address
+      url: Spree.pathFor('checkout/validate_address')
       data:
         address: address
         state: 'address'
